@@ -14,7 +14,7 @@ const app = express();
 const main = () => {
   try{
      //connect with DB
-      mongoose.connect(DB, {useNewUrlParser: true, useFindAndModify: false, useUnifiedTopology: true})
+      mongoose.connect(DB, {useNewUrlParser: true, useFindAndModify: false, useUnifiedTopology: true});
      //start application listening for request on server
   } catch (err){}
 };
