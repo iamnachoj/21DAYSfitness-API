@@ -1,10 +1,12 @@
 import {User} from '../models';
 import {Router} from 'express';
+import {join} from 'path';
 import {randomBytes} from 'crypto';
 import {RegisterValidations} from '../validators';
 import Validator from '../middlewares/validator-middleware';
 import sendMail from '../functions/email-sender';
 import {DOMAIN} from '../constants/index'
+import consolaGlobalInstance from 'consola';
 
 const router = Router();
 
@@ -56,6 +58,32 @@ router.post('/api/register', RegisterValidations, Validator, async(req,res) => {
       success: false,
       message: "An error occurred."
     });
+  }
+});
+
+/**
+ * @description To create a new user account 
+ * @access Public <only via email>
+ * @api /users/verify-now/:verificationCode
+ * @type GET
+ */
+router.get('/verify-now/:verificationCode', async (req, res) => {
+  try {
+    let {verificationCode} = req.params;
+    let user = await User.findOne({verificationCode});
+    if(!user){
+      return res.status(401).json({
+        success: false,
+        message: 'Unauthorized access. Invalid verification code.'
+      });
+    }
+    user.verified = true;
+    user.verificationCode = undefined;
+    await user.save();
+    return res.sendFile(join(__dirname, '../templates/verification-success.html'));
+  }catch(err){
+    consola.error(err)
+     return res.sendFile(join(__dirname, '../templates/errors.html'))
   }
 });
 
