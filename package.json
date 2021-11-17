@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/iamnachoj/21DAYSfitness-API#readme",
   "dependencies": {
+    "@sendgrid/mail": "^7.6.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "consola": "^2.15.3",
