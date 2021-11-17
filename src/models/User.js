@@ -1,9 +1,10 @@
 import {Schema, model} from 'mongoose';
-import {hash} from 'bcryptjs';
+import {compare, hash} from 'bcryptjs';
 import {sign} from 'jsonwebtoken';
 import {SECRET} from '../constants'
 import {randomBytes} from 'crypto'
 import {pick} from 'lodash'
+import { check } from 'express-validator';
 
 const UserSchema = new Schema({
     name: {
@@ -69,7 +70,7 @@ UserSchema.methods.generatePasswordReset = function(){
 };
 
 UserSchema.methods.getUserInfo = function() {
-  return pick(this, ['_id', 'username', 'email', 'name' ])
+  return pick(this, ['_id', 'username', 'email', 'name', 'verified' ])
 };
 
 const User = model('users', UserSchema);
