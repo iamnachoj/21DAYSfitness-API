@@ -1,0 +1,35 @@
+{
+  "name": "21daysfitness-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node -r esm",
+    "dev": "nodemon -r esm"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iamnachoj/21DAYSfitness-API.git"
+  },
+  "keywords": [],
+  "author": "Ignacio Jimenez | Agustin Polegre",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iamnachoj/21DAYSfitness-API/issues"
+  },
+  "homepage": "https://github.com/iamnachoj/21DAYSfitness-API#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "consola": "^2.15.3",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "esm": "^3.2.25",
+    "express": "^4.17.1",
+    "express-validator": "^6.13.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.0.13",
+    "passport": "^0.5.0",
+    "passport-jwt": "^4.0.0"
+  }
+}
