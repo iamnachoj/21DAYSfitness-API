@@ -1,7 +1,7 @@
-import {User} from '../models'
+import {User} from '../models';
 import {Router} from 'express';
-import {validationResult} from 'express-validator';
-import {RegisterValidations} from '../validators'
+import {RegisterValidations} from '../validators';
+import Validator from '../middlewares/validator-middleware';
 
 const router = Router();
 
@@ -11,11 +11,8 @@ const router = Router();
  * @api /users/api/register
  * @type POST
  */
-router.post('/api/register', RegisterValidations, async(req,res) => {
-   let errors = validationResult(req);
-   return res.json({
-     errors: errors.array()  
-   })
+router.post('/api/register', RegisterValidations, Validator, async(req,res) => {
+   
 });
 
 export default router;  
