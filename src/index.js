@@ -7,12 +7,18 @@ import consola from 'consola';
 //import application constant
 import {DB, PORT} from './constants';
 
+// Router exports
+import UserApis from './apis/users';
+
 //initialize express application
 const app = express();
 
 // apply application middleware
 app.use(cors());
 app.use(json());
+
+//Inject Sub router and apis
+app.use('/users', UserApis)
 
 // main async function 
 const main = async () => {
