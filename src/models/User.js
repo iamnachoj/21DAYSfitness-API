@@ -38,6 +38,118 @@ const UserSchema = new Schema({
     resetPasswordExpiresIn:{
       type: Date,
       required: false
+    },
+    challenges: {
+      type: Array,
+      default: [
+        [
+          {
+            "day": "1",
+            "completed": false,
+            "routine": {}
+          },
+          {
+            "day": "2",
+            "completed": false,
+            "routine": {}
+          },
+          {
+            "day": "3",
+            "completed": false,
+            "routine": {}
+          },
+          {
+            "day": "4",
+            "completed": false,
+            "routine": {}
+          },
+          {
+            "day": "5",
+            "completed": false,
+            "routine": {}
+          },
+          {
+            "day": "6",
+            "completed": false,
+            "routine": {}
+          },
+          {
+            "day": "7",
+            "completed": false,
+            "routine": {}
+          },
+          {
+            "day": "8",
+            "completed": false,
+            "routine": {}
+          },
+          {
+            "day": "9",
+            "completed": false,
+            "routine": {}
+          },
+          {
+            "day": "10",
+            "completed": false,
+            "routine": {}
+          },
+          {
+            "day": "11",
+            "completed": false,
+            "routine": {}
+          },
+          {
+            "day": "12",
+            "completed": false,
+            "routine": {}
+          },
+          {
+            "day": "13",
+            "completed": false,
+            "routine": {}
+          },
+          {
+            "day": "14",
+            "completed": false,
+            "routine": {}
+          },
+          {
+            "day": "15",
+            "completed": false,
+            "routine": {}
+          },
+          {
+            "day": "16",
+            "completed": false,
+            "routine": {}
+          },
+          {
+            "day": "17",
+            "completed": false,
+            "routine": {}
+          },
+          {
+            "day": "18",
+            "completed": false,
+            "routine": {}
+          },
+          {
+            "day": "19",
+            "completed": false,
+            "routine": {}
+          },
+          {
+            "day": "20",
+            "completed": false,
+            "routine": {}
+          },
+          {
+            "day": "21",
+            "completed": false,
+            "routine": {}
+          }
+        ]
+      ]
     }
   },
   {timestamps:true}
@@ -70,7 +182,7 @@ UserSchema.methods.generatePasswordReset = function(){
 };
 
 UserSchema.methods.getUserInfo = function() {
-  return pick(this, ['_id', 'username', 'email', 'name', 'verified' ])
+  return pick(this, ['_id', 'username', 'email', 'name', 'verified', 'challenges' ])
 };
 
 const User = model('users', UserSchema);
