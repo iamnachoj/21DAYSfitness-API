@@ -6,7 +6,7 @@ import {AuthenticateValidations, RegisterValidations} from '../validators';
 import Validator from '../middlewares/validator-middleware';
 import sendMail from '../functions/email-sender';
 import {DOMAIN} from '../constants/index'
-import consolaGlobalInstance from 'consola';
+import {userAuth} from '../middlewares/auth-guard';
 
 const router = Router();
 
@@ -125,4 +125,15 @@ router.post('/api/authenticate', AuthenticateValidations , Validator, async(req,
   }
 })
 
+/**
+ * @description To get the authenticate user's profile
+ * @access Private
+ * @api /users/api/authenticate
+ * @type GET
+ */
+router.get('/api/authenticate',userAuth, async (req,res) => {
+  return res.status(200).json({
+   user: req.user
+  })
+})
 export default router;  
