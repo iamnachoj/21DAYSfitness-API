@@ -10,7 +10,7 @@ import {DB, PORT} from './constants';
 
 // Router imports
 import UserApis from './apis/users';
-
+import profileApis from './apis/profiles';
 // Import passport middleware
 require("./middlewares/passport-middleware");
 
@@ -23,7 +23,8 @@ app.use(json());
 app.use(passport.initialize());
 
 //Inject Sub router and apis
-app.use('/users', UserApis)
+app.use('/users', UserApis);
+app.use('/profiles', profileApis);
 
 // main async function 
 const main = async () => {
