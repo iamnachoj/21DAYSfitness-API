@@ -1,4 +1,5 @@
 import cors from 'cors';
+import {join} from 'path';
 import express from 'express';
 import mongoose from 'mongoose';
 import {json} from 'body-parser';
@@ -21,7 +22,7 @@ const app = express();
 app.use(cors());
 app.use(json());
 app.use(passport.initialize());
-
+app.use(express.static(join(__dirname, './uploads')));
 //Inject Sub router and apis
 app.use('/users', UserApis);
 app.use('/profiles', profileApis);
